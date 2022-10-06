@@ -26,6 +26,12 @@ public:
     PrimeNumberDetectorMultiThread(size_t /*nbThreads*/);
 
     bool isPrime(uint64_t /*number*/) override;
+private:
+    size_t nbThreads;
+
+    bool hasDividerBeenFound = false;
+
+    void checkPrimeThreaded(uint64_t number, size_t offset);
 };
 
 #endif // PRIMENUMBERDETECTOR_H
