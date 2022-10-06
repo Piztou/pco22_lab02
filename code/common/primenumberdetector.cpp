@@ -40,10 +40,14 @@ bool PrimeNumberDetectorMultiThread::isPrime(uint64_t number) {
 void PrimeNumberDetectorMultiThread::checkPrimeThreaded(uint64_t number, size_t offset) {
 
     // Check from 2 to n-1
-    for (int i = offset + 2; i < sqrt(number); i++)
+    for (int i = offset + 2; i < sqrt(number); i+= nbThreads)
+    {
         if (number % i == 0)
         {
             hasDividerBeenFound = true;
             return;
         }
+        if(hasDividerBeenFound)
+            return;
+    }
 }
