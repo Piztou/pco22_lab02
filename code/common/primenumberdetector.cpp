@@ -16,13 +16,16 @@ bool PrimeNumberDetector::isPrime(uint64_t number) {
 }
 
 PrimeNumberDetectorMultiThread::PrimeNumberDetectorMultiThread(size_t nbThreads) : nbThreads(nbThreads) {
-    // TODO
+
 }
 
 bool PrimeNumberDetectorMultiThread::isPrime(uint64_t number) {
     // Corner case
     if (number <= 1)
         return false;
+
+    // Reset
+    hasDividerBeenFound = false;
 
     std::vector<PcoThread> threads;
 
